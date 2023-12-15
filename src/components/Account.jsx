@@ -2,7 +2,7 @@
 import { useNavigate } from "react-router-dom"
 
 
-const Account = ({user, setUser, setToken }) => {
+const Account = ({user, setUser, setToken, checkedBooks, returnBook}) => {
     const navigate = useNavigate()
     
     const logout = () => {
@@ -14,14 +14,39 @@ const Account = ({user, setUser, setToken }) => {
     if(!user.books){
         return null
     }
-    
+
+    const handleReturn = (book) => {
+        returnBook(book)
+    }
+
     return(
         <div>
             <h1>Account</h1>
             <button onClick={() => {logout()}}>Logout</button>
             <hr/>
             <h2>Email: {user.email}</h2>
-            <h4>This could be a good place to show checked out books...</h4>
+            { checkedBooks.length > 0 ? 
+                <div>
+                <h4>Checked Out Books ({checkedBooks.length}):</h4>
+                <ul>
+                    {
+                        checkedBooks.map((book) => {
+                            return (
+                                <div key={book.id}>
+                                    <li> {book.title}</li>
+                                    <button onClick={()=> {handleReturn(book)}}>Return Book</button>
+                                </div>
+                                
+                            )
+                        })
+                    }
+                </ul>
+                </div>
+                : 
+                null
+            }
+            
+            
             
             
            

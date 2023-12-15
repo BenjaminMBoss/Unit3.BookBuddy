@@ -1,13 +1,22 @@
+import { Link } from "react-router-dom"
 
-
-const Books = () => {
+const Books = ({books}) => {
 
     return(
         <div>
 
             <h1>Books</h1>
-            <h3>We should see our books here!</h3>
-        
+            <ul>
+            {
+                books.map((book) => {
+                    return (
+                        <li key={book.id}>
+                            <Link to={`/books/${book.id}`}>{book.title}</Link>
+                        </li>
+                    )
+                })
+            }
+            </ul>
         </div>
     )
 }
