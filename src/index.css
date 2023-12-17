@@ -16,15 +16,23 @@ nav{
   display: flex;
   justify-content: space-around;
   background-color: lightgreen;
+  
 }
 
 nav span{
   display: flex;
   justify-content: space-around;
+  
 }
 
 nav a{
   padding: 1rem;
+  transition: all 0.25s;
+}
+
+nav a:hover {
+  background-color: lightcoral;
+  transition: all 0.5s;
 }
 
 .registerForm {
@@ -33,4 +41,12 @@ nav a{
 }
 img {
   width: 35%;
+}
+
+h1 {
+  color: midnightblue;
+}
+
+h4 {
+  font-style: italic;
 }
